@@ -6,7 +6,7 @@ const error404 = document.querySelector('.not-found');
 const cityHide = document.querySelector('.city-hide');
 
 search.addEventListener('click', () => {
-    const APIKey = "API"; 
+    const APIKey = "YOUR_API"; 
     const city = document.querySelector('.search-box input').value; 
 
     if (city == '') return; 
@@ -43,7 +43,6 @@ search.addEventListener('click', () => {
             container.classList.remove('active');
         }, 2500);
 
-        // Corrigir a estrutura do switch com 'break'
         switch (json.weather[0].main) { 
             case 'Clear': 
                 image.src = 'images/clear.png'; 
@@ -76,6 +75,15 @@ search.addEventListener('click', () => {
         const infoHumidity = document.querySelector('.info-humidity');
         const infoWind = document.querySelector('.info-wind');
         
+        // Remover clones anteriores, se existirem
+        const previousCloneWeather = document.getElementById('clone-info-weather');
+        const previousCloneHumidity = document.getElementById('clone-info-humidity');
+        const previousCloneWind = document.getElementById('clone-info-wind');
+
+        if (previousCloneWeather) previousCloneWeather.remove();
+        if (previousCloneHumidity) previousCloneHumidity.remove();
+        if (previousCloneWind) previousCloneWind.remove();
+
         // Clonando as informações
         const elCloneInfoWeather = infoWeather.cloneNode(true);
         const elCloneInfoHumidity = infoHumidity.cloneNode(true);
